@@ -23,4 +23,4 @@ docker run \
        -v /etc/passwd:/etc/passwd:ro \
        -v /etc/shadow:/etc/shadow:ro \
        -v /dev/bus/usb:/dev/bus/usb \
-       eerimoq/monolinux-rust-jiffy:latest bash -c "source setup.sh && $COMMAND"
+       monolinux-rust-jiffy:latest bash -c "source setup.sh && $COMMAND"

@@ -4,3 +4,6 @@ export ML_SOURCES=$(readlink -f 3pp)
 export ML_LINUX_CONFIG=$(readlink -f app/linux-jiffy.config)
 export PATH=$PATH:$ML_ROOT/bin
 export PATH=/opt/arm-linux-musleabi-cross/bin:$PATH
+export PATH=/opt/cargo/bin:$PATH
+export RUSTUP_HOME=/opt/rustup
+export CARGO_HOME=/opt/cargo

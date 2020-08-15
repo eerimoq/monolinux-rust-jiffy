@@ -48,27 +48,13 @@ RUN apt-get update && \
 
 RUN mv /usr/sbin/tcpdump /usr/bin
 
-COPY bpak bpak
-RUN cd bpak && autoreconf -fi && ./configure && make && make install
-RUN ldconfig
-RUN rm -rf bpak
-
-COPY punchboot punchboot
-RUN make -C punchboot/src/tools/punchboot/src GIT_VERSION=monolinux-jiffy
-RUN make -C punchboot/src/tools/punchboot/src install GIT_VERSION=monolinux-jiffy
-RUN make -C punchboot/src/tools/imxcst/src GIT_VERSION=monolinux-jiffy
-RUN install -m 644 punchboot/src/tools/imxcst/src/build-x86_64-linux-gnu/cst /usr/bin
-RUN chmod +x /usr/bin/cst
-RUN install -m 644 punchboot/src/tools/createtoken.sh /usr/bin
-RUN chmod +x /usr/bin/createtoken.sh
-RUN rm -rf punchboot
-
-COPY uuu /usr/bin
-
 ENV LC_ALL C.UTF-8
 ENV LANG C.UTF-8
 
-RUN rustup target add arm-unknown-linux-musleabi
+RUN export RUSTUP_HOME=/opt/rustup && \
+    export CARGO_HOME=/opt/cargo && \
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
+    sh -s -- -y --no-modify-path --target arm-unknown-linux-musleabi
 
 RUN pip3 install \
     ecdsa \

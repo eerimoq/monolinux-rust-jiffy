@@ -2,4 +2,4 @@
 target = "arm-unknown-linux-musleabi"
 
 [target.arm-unknown-linux-musleabi]
-linker = "/home/erik/workspace/monolinux-rust-jiffy/docker/arm-linux-musleabi-cross/bin/arm-linux-musleabi-gcc"
+linker = "/opt/arm-linux-musleabi-cross/bin/arm-linux-musleabi-gcc"

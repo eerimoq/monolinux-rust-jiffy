@@ -68,6 +68,8 @@ COPY uuu /usr/bin
 ENV LC_ALL C.UTF-8
 ENV LANG C.UTF-8
 
+RUN rustup target add arm-unknown-linux-musleabi
+
 RUN pip3 install \
     ecdsa \
     pbtools \
@@ -80,4 +82,4 @@ RUN pip3 install \
 
 RUN echo '%sudo	ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
-ENV HOSTNAME=monolinux-jiffy
+ENV HOSTNAME=monolinux-rust-jiffy
